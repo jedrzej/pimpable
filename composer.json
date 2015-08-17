@@ -1,0 +1,41 @@
+{
+  "name": "jedrzej/pimpable",
+  "description": "Laravel 4/5 package that allows to dynamically filter, sort and eager load relations for your models using request parameters",
+  "keywords": [
+    "laravel",
+    "eager",
+    "load",
+    "eloquent",
+    "api",
+    "request",
+    "model",
+    "search",
+    "searchable",
+    "filter",
+    "sort",
+    "sortable"
+  ],
+  "homepage": "https://github.com/jedrzej/pimpable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jędrzej Kuryło",
+      "email": "jedrzej.kurylo@gmail.com"
+    }
+  ],
+  "require": {
+    "jedrzej/sortable": "0.0.*",
+    "jedrzej/searchable": "0.0.*",
+    "jedrzej/withable": "0.0.*"
+  },
+  "require-dev": {
+    "codeception/codeception": "2.0.*",
+    "codeception/specify": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jedrzej\\": "src/Jedrzej/",
+      "Illuminate\\": "vendor/laravel/framework/src/Illuminate/"
+    }
+  }
+}
