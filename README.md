@@ -61,6 +61,16 @@ It combines the following packages:
 
 It simplifies embedding them in your models and allows using all 3 of them with a single function call.
 
+## Composer install
+
+Add the following line to `composer.json` file in your project:
+
+    "jedrzej/pimpable": "0.0.1"
+
+or run the following in the commandline in your project's root folder:
+
+    composer require "jedrzej/pimpable" "0.0.1"
+
 ## Usage
 
 ### Pimp your model
@@ -87,3 +97,14 @@ pass the desired value to the **pimp()** method:
     return Model::pimp(null, $sort)->get();
 
 Information how to configure the behaviours using request parameters can be found in documentation of corresponding behaviour package.
+
+### Additional configuration
+ If you are using `sort` request parameter for other purpose, you can change the name of the parameter that will be
+ interpreted as sorting criteria by setting a `$sortParameterName` property in your model, e.g.:
+
+     protected $sortParameterName = 'sortBy';
+
+ If you are using `with` request parameter for other purpose, you can change the name of the parameter that will be
+  interpreted as a list of relations to load by setting a `$withParameterName` property in your model, e.g.:
+
+     protected $withParameterName = 'relations';

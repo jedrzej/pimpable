@@ -1,6 +1,7 @@
 <?php namespace Jedrzej\Pimpable;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Input;
 use Jedrzej\Searchable\SearchableTrait;
 use Jedrzej\Sortable\SortableTrait;
 use Jedrzej\Withable\WithableTrait;
@@ -19,10 +20,6 @@ trait PimpableTrait
 
     protected $withable = ['*'];
 
-    protected $parameterSort = 'sort';
-
-    protected $parameterWith = 'with';
-
     /**
      * Enable searchable, sortable and withable scopes
      *
@@ -31,7 +28,7 @@ trait PimpableTrait
      */
     public function scopePimp(Builder $builder, $query = [], $sort = [], $relations = [])
     {
-        $query = $query ?: array_except([$this->parameterSort, $this->parameterWith]);
+        $query = $query ?: array_except(Input::all(), [$this->sortParameterName, $this->withParameterName]);
         $builder->filtered($query)->sorted($sort)->withRelations($relations);
     }
 }
