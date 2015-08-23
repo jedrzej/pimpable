@@ -14,11 +14,17 @@ trait PimpableTrait
 
     use WithableTrait;
 
-    protected $searchable = ['*'];
+    protected function getSearchableAttributes() {
+        return property_exists($this, 'searchable') ? $this->searchable : ['*'];
+    }
 
-    protected $sortable = ['*'];
+    protected function getSortableAttributes() {
+        return property_exists($this, 'sortable') ? $this->sortable : ['*'];
+    }
 
-    protected $withable = ['*'];
+    protected function getWithableRelations() {
+        return property_exists($this, 'withable') ? $this->withable : ['*'];
+    }
 
     /**
      * Enable searchable, sortable and withable scopes
