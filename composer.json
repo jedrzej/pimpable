@@ -24,9 +24,9 @@
     }
   ],
   "require": {
-    "jedrzej/sortable": "0.0.4",
-    "jedrzej/searchable": "0.0.6",
-    "jedrzej/withable": "0.0.3"
+    "jedrzej/sortable": "0.0.*",
+    "jedrzej/searchable": "0.0.*",
+    "jedrzej/withable": "0.0.*"
   },
   "require-dev": {
     "codeception/codeception": "2.0.*",
