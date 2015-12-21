@@ -145,6 +145,31 @@ class PimpableTraitTest extends Test
                 $this->assertEquals(Constraint::MODE_AND, $where['boolean']);
             }
         });
+
+        $this->specify("query paramters relevant to related sortable/withable bundles are excluded", function () {
+            $wheres = (array)TestModel::pimp(['sort' => 'sort', 'with' => 'with', 'field1' => 'field1'], ['id,asc'], 'owner')->getQuery()->wheres;
+            $this->assertCount(1, $wheres);
+            $this->assertEquals('Basic', $wheres[0]['type']);
+            $this->assertEquals('field1', $wheres[0]['value']);
+            $this->assertEquals('=', $wheres[0]['operator']);
+            $this->assertEquals('field1', $wheres[0]['column']);
+            $wheres = (array)TestModelWithAlteredSortParameterName::pimp(['sort' => 'sort', 'with' => 'with', 'field1' => 'field1'], ['id,asc'], 'owner')->getQuery()->wheres;
+            $this->assertCount(2, $wheres);
+            $this->assertEquals('Basic', $wheres[0]['type']);
+            $this->assertEquals('sort', $wheres[0]['value']);
+            $this->assertEquals('=', $wheres[0]['operator']);
+            $this->assertEquals('sort', $wheres[0]['column']);
+            $this->assertEquals('Basic', $wheres[1]['type']);
+            $this->assertEquals('field1', $wheres[1]['value']);
+            $this->assertEquals('=', $wheres[1]['operator']);
+            $this->assertEquals('field1', $wheres[1]['column']);
+            $wheres = (array)TestModelWithAlteredSortParameterName::pimp(['orderBy' => 'orderBy', 'with' => 'with', 'field1' => 'field1'], ['id,asc'], 'owner')->getQuery()->wheres;
+            $this->assertCount(1, $wheres);
+            $this->assertEquals('Basic', $wheres[0]['type']);
+            $this->assertEquals('field1', $wheres[0]['value']);
+            $this->assertEquals('=', $wheres[0]['operator']);
+            $this->assertEquals('field1', $wheres[0]['column']);
+        });
     }
 
     public function testSorting() {
