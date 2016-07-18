@@ -8,18 +8,20 @@ Do you need to **sort** the results or **return selected relations** together wi
 
 **Pimp your model!**
 
-    class Post extends Eloquent {
-      use PimpableTrait;
-    }
+```php
+class Post extends Eloquent {
+    use PimpableTrait;
+}
+```
 
 **Pimp your API!**
-
-    class PostsController extends Controller {
-      public function index() {
+```php
+class PostsController extends Controller {
+    public function index() {
         return Post::pimp()->get();
-      }
     }
-
+}
+```
 **What data do you need?**
 
 > I need all the posts in a thread with ID 42...
@@ -75,11 +77,11 @@ or run the following in the commandline in your project's root folder:
 
 ### Pimp your model
 In order to pimp your model class, you need to import **PimpableTrait** into your model. This will internally import all 3 behaviours.
-
-    class Model extends Eloquent {
-      use PimpableTrait;
-    }
-
+```php
+class Model extends Eloquent {
+    use PimpableTrait;
+}
+```
 By default all model fields are searchable and sortable; all relations can be eagerly loaded by default as well.
 If you need to limit which fields can model be filtered and sorted by and which relations can be loaded, see documentation
 of corresponding behaviour package.
@@ -90,11 +92,13 @@ Once you pimp your model, additional method **pimp()** will be available on the 
 All criteria will be taken from the request automatically, but if you want to override the request parameters, you can
 pass the desired value to the **pimp()** method:
 
-    //override all parameters
-    return Model::pimp($filters, $sort, $relations)->get();
+```php
+//override all parameters
+return Model::pimp($filters, $sort, $relations)->get();
 
-    //override sorting criteria only
-    return Model::pimp(null, $sort)->get();
+//override sorting criteria only
+return Model::pimp(null, $sort)->get();
+```
 
 Information how to configure the behaviours using request parameters can be found in documentation of corresponding behaviour package.
 
@@ -102,9 +106,13 @@ Information how to configure the behaviours using request parameters can be foun
  If you are using `sort` request parameter for other purpose, you can change the name of the parameter that will be
  interpreted as sorting criteria by setting a `$sortParameterName` property in your model, e.g.:
 
-     protected $sortParameterName = 'sortBy';
+```php
+protected $sortParameterName = 'sortBy';
+```
 
  If you are using `with` request parameter for other purpose, you can change the name of the parameter that will be
   interpreted as a list of relations to load by setting a `$withParameterName` property in your model, e.g.:
 
-     protected $withParameterName = 'relations';
+```php
+protected $withParameterName = 'relations';
+```
