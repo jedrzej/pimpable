@@ -83,7 +83,7 @@ class Model extends Eloquent {
 }
 ```
 By default all model fields are searchable and sortable; all relations can be eagerly loaded by default as well.
-If you need to limit which fields can model be filtered and sorted by and which relations can be loaded, see documentation
+If you need to limit which fields can be filtered and sorted by and which relations can be loaded, see documentation
 of corresponding behaviour package.
 
 ### Pimp your API
