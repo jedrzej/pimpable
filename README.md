@@ -53,7 +53,7 @@ class PostsController extends Controller {
 
 ## Overview
 
-Laravel 4/5 package that allows to dynamically filter, sort and eager load relations for your models using request parameters.
+Laravel 4/5/6 package that allows to dynamically filter, sort and eager load relations for your models using request parameters.
 
 It combines the following packages:
 
@@ -67,11 +67,11 @@ It simplifies embedding them in your models and allows using all 3 of them with 
 
 Add the following line to `composer.json` file in your project:
 
-    "jedrzej/pimpable": "0.0.4"
+    "jedrzej/pimpable": "0.0.5"
 
 or run the following in the commandline in your project's root folder:
 
-    composer require "jedrzej/pimpable" "0.0.4"
+    composer require "jedrzej/pimpable" "0.0.5"
 
 ## Usage
 
