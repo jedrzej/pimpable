@@ -67,11 +67,11 @@ It simplifies embedding them in your models and allows using all 3 of them with 
 
 Add the following line to `composer.json` file in your project:
 
-    "jedrzej/pimpable": "0.0.5"
+    "jedrzej/pimpable": "0.0.6"
 
 or run the following in the commandline in your project's root folder:
 
-    composer require "jedrzej/pimpable" "0.0.5"
+    composer require "jedrzej/pimpable" "0.0.6"
 
 ## Usage
 

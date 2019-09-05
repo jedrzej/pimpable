@@ -7,6 +7,8 @@ class TestModel extends Model
 {
     use PimpableTrait;
 
+    protected $sortParameterName = 'sort';
+
     protected function newBaseQueryBuilder()
     {
         return new TestBuilder;

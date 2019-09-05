@@ -26,10 +26,11 @@
   "require": {
     "jedrzej/sortable": "0.0.*",
     "jedrzej/searchable": "0.0.*",
-    "jedrzej/withable": "0.0.*"
+    "jedrzej/withable": "0.0.*",
+    "illuminate/support": "*"
   },
   "require-dev": {
-    "codeception/codeception": "2.0.*",
+    "codeception/codeception": "2.1.*",
     "codeception/specify": "*"
   },
   "autoload": {

@@ -1,10 +1,11 @@
 <?php namespace Jedrzej\Pimpable;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use Jedrzej\Searchable\SearchableTrait;
 use Jedrzej\Sortable\SortableTrait;
 use Jedrzej\Withable\WithableTrait;
+use Illuminate\Support\Arr;
 
 trait PimpableTrait
 {
@@ -34,7 +35,7 @@ trait PimpableTrait
      */
     public function scopePimp(Builder $builder, $query = [], $sort = [], $relations = [])
     {
-        $query = $query ?: array_except(Input::all(), [$this->sortParameterName, $this->withParameterName]);
+        $query = Arr::except($query ?: Request::all(), [$this->sortParameterName, $this->withParameterName]);
         $builder->filtered($query)->sorted($sort)->withRelations($relations);
     }
 }

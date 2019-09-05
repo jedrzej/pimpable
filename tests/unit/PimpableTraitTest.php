@@ -129,8 +129,8 @@ class PimpableTraitTest extends Test
             foreach (TestModel::pimp(['field1' => 5, 'field2' => 3, 'mode' => 'and'], ['id,asc'], 'owner')->getQuery()->wheres as $where) {
                 $this->assertEquals(Constraint::MODE_AND, $where['boolean']);
             }
-            $this->assertCount(2, (array)TestModel::pimp(['field1' => 5, 'field2' => 3, 'mode' => 'or'], ['id,asc'], 'owner')->getQuery()->wheres);
-            foreach (TestModel::pimp(['field1' => 5, 'field2' => 3, 'mode' => 'or'], ['id,asc'], 'owner')->getQuery()->wheres as $where) {
+            $this->assertCount(2, (array)TestModel::pimp(['field1' => 5, 'field2' => 3, 'mode' => 'or'], ['id,asc'], 'owner')->getQuery()->wheres[0]['query']->wheres[0]['query']->wheres);
+            foreach (TestModel::pimp(['field1' => 5, 'field2' => 3, 'mode' => 'or'], ['id,asc'], 'owner')->getQuery()->wheres[0]['query']->wheres as $where) {
                 $this->assertEquals(Constraint::MODE_OR, $where['boolean']);
             }
         });
